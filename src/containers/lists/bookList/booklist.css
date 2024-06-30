@@ -5,6 +5,7 @@
   width: calc(100% - 220px);
   height: calc(100% - 125px);
   overflow: visible;
+  transition: 0.3s ease;
 }
 .book-list-header {
   display: flex;
@@ -14,6 +15,7 @@
   bottom: 10px;
   left: 220px;
   width: calc(100% - 220px);
+  transition: 0.3s ease;
 }
 .book-list-container {
   width: 100%;

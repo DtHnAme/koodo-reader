@@ -104,7 +104,7 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
             >
               <div
                 className="side-menu-icon"
-                style={this.props.isCollapsed ? {} : { marginLeft: "38px" }}
+                style={this.props.isCollapsed ? { marginLeft: "3px"} : { marginLeft: "38px" }}
               >
                 <span
                   className={
@@ -112,19 +112,15 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
                       ? `icon-${item.icon}  active-icon`
                       : `icon-${item.icon}`
                   }
-                  style={
-                    this.props.isCollapsed
-                      ? { position: "relative", marginLeft: "-9px" }
-                      : {}
-                  }
                 ></span>
               </div>
 
               <span
+                className="side-menu-title"
                 style={
                   this.props.isCollapsed
-                    ? { display: "none", width: "70%" }
-                    : { width: "60%" }
+                    ? { opacity: 0 }
+                    : { opacity: 1 }
                 }
               >
                 {this.props.t(item.name)}
@@ -187,7 +183,7 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
             >
               <div
                 className="side-menu-icon"
-                style={this.props.isCollapsed ? {} : { marginLeft: "38px" }}
+                style={this.props.isCollapsed ? { marginLeft: "3px" } : { marginLeft: "38px" }}
               >
                 <span
                   className={
@@ -195,19 +191,15 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
                       ? `icon-bookshelf-line  active-icon sidebar-shelf-icon`
                       : `icon-bookshelf-line sidebar-shelf-icon`
                   }
-                  style={
-                    this.props.isCollapsed
-                      ? { position: "relative", marginLeft: "-8px" }
-                      : {}
-                  }
                 ></span>
               </div>
 
               <span
+                className="side-menu-title"
                 style={
                   this.props.isCollapsed
-                    ? { display: "none", width: "70%" }
-                    : { width: "60%" }
+                    ? { opacity: 0 }
+                    : { opacity: 1 }
                 }
               >
                 {this.props.t(item)}
@@ -250,19 +242,18 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
             onClick={() => {
               this.handleJump("https://koodoreader.com");
             }}
-            style={this.state.isCollapsed ? { display: "none" } : {}}
+            style={this.state.isCollapsed ? { opacity: 1, width: 0, top: 0, left: 0 } : {}}
             className="logo"
           />
           <div
             className="side-menu-container-parent"
-            style={this.state.isCollapsed ? { width: "70px" } : {}}
           >
             <ul className="side-menu-container">{renderSideMenu()}</ul>
             <div
               className="side-shelf-title-container"
               style={
                 this.state.isCollapsed
-                  ? { display: "none" }
+                  ? { opacity: 0, border: "none" }
                   : this.state.isCollpaseShelf
                   ? {}
                   : { border: "none" }

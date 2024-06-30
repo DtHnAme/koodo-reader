@@ -3,6 +3,7 @@
   height: 80px;
   overflow: hidden;
   margin-left: 190px;
+  transition: 0.3s ease;
 }
 
 .setting-icon-container:hover {
@@ -130,12 +131,14 @@
   margin-left: 280px;
   height: 50px;
   z-index: 1;
+  transition: 0.3s ease;
 }
 .header-search-container {
   position: absolute;
   top: 23px;
   margin-left: 40px;
   width: 220px;
+  transition: 0.3s ease;
 }
 .setting-icon {
   float: left;
