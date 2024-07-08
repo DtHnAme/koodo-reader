@@ -304,7 +304,13 @@ class TextToSpeech extends React.Component<
               <span
                 className="single-control-switch"
                 onClick={() => {
-                  this.handleChangeAudio();
+                  if (isElectron) {
+                    this.setState({ isAudioOn: !this.state.isAudioOn }, () => {
+                      this.props.handleTextSpeech(this.state.isAudioOn);
+                    })  
+                  } else {
+                    this.handleChangeAudio();
+                  }
                 }}
                 style={this.state.isAudioOn ? {} : { opacity: 0.6 }}
               >

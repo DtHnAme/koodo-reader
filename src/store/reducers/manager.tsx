@@ -10,6 +10,7 @@ const initState = {
   isSettingOpen: false,
   viewMode: "card",
   isSortDisplay: false,
+  isTextSpeech: false,
   isShowLoading: false,
   isNewWarning: false,
   isTipDialog: false,
@@ -109,6 +110,11 @@ export function manager(
       return {
         ...state,
         isSortDisplay: action.payload,
+      };
+    case "HANDLE_TEXT_SPEECH":
+      return {
+        ...state,
+        isTextSpeech: action.payload,
       };
     case "HANDLE_SHOW_LOADING":
       return {

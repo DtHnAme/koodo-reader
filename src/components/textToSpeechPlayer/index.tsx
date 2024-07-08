@@ -1,8 +1,7 @@
 import { withTranslation } from "react-i18next";
 import { connect } from "react-redux";
-import TextToSpeech from "./component";
+import TextToSpeechPlayer from "./component";
 import { stateType } from "../../store";
-import { handleTextSpeech } from "../../store/actions";
 
 const mapStateToProps = (state: stateType) => {
   return {
@@ -12,10 +11,8 @@ const mapStateToProps = (state: stateType) => {
     isReading: state.book.isReading,
   };
 };
-const actionCreator = {
-  handleTextSpeech
-};
+const actionCreator = {};
 export default connect(
   mapStateToProps,
   actionCreator
-)(withTranslation()(TextToSpeech as any) as any);
+)(withTranslation()(TextToSpeechPlayer as any) as any);
