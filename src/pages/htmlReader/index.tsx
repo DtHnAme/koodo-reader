@@ -14,6 +14,7 @@ const mapStateToProps = (state: stateType) => {
   return {
     currentBook: state.book.currentBook,
     percentage: state.progressPanel.percentage,
+    isTextSpeech: state.manager.isTextSpeech,
     htmlBook: state.reader.htmlBook,
   };
 };

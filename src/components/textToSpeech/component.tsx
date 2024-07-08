@@ -53,6 +53,9 @@ class TextToSpeech extends React.Component<
     };
     this.nativeVoices = await setSpeech();
     if (isElectron) {
+      this.setState({
+        isAudioOn: this.props.isTextSpeech
+      })
       this.edgeVoices = await BingTTSUtil.getVoiceList();
       this.voices = [
         ...this.nativeVoices,
@@ -304,7 +307,14 @@ class TextToSpeech extends React.Component<
               <span
                 className="single-control-switch"
                 onClick={() => {
-                  this.handleChangeAudio();
+                  if (isElectron) {
+                    this.setState({ isAudioOn: !this.state.isAudioOn }, () => {
+                      this.props.handleTextSpeech(this.state.isAudioOn);
+                      this.handleSelect();
+                    })  
+                  } else {
+                    this.handleChangeAudio();
+                  }
                 }}
                 style={this.state.isAudioOn ? {} : { opacity: 0.6 }}
               >

@@ -9,8 +9,10 @@ import StorageUtil from "../../utils/serviceUtils/storageUtil";
 import ReadingTime from "../../utils/readUtils/readingTime";
 import Viewer from "../../containers/htmlViewer";
 import { Tooltip } from "react-tooltip";
+import { isElectron } from "react-device-detect";
 import RecordLocation from "../../utils/readUtils/recordLocation";
 import "./index.css";
+import TextToSpeechPlayer from "../../components/textToSpeechPlayer";
 declare var window: any;
 
 let lock = false; //prevent from clicking too fasts
@@ -285,6 +287,18 @@ class Reader extends React.Component<ReaderProps, ReaderState> {
         >
           <span className="icon-grid panel-icon"></span>
         </div>
+        { isElectron && (
+          <div
+            className="player-panel"
+            style={
+              this.props.isTextSpeech
+                ? { opacity: "1", pointerEvents: "auto" }
+                : { opacity: "0", pointerEvents: "none"  }
+            }
+          >
+            <TextToSpeechPlayer />
+          </div>
+        )}
 
         <div
           className="setting-panel-container"

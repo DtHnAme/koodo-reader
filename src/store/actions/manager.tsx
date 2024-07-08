@@ -38,6 +38,9 @@ export function handleViewMode(mode: string) {
 export function handleSortDisplay(isSortDisplay: boolean) {
   return { type: "HANDLE_SORT_DISPLAY", payload: isSortDisplay };
 }
+export function handleTextSpeech(isSpeechOpen: boolean) {
+  return { type: "HANDLE_TEXT_SPEECH", payload: isSpeechOpen };
+}
 export function handleLoadingDialog(isShowLoading: boolean) {
   return { type: "HANDLE_SHOW_LOADING", payload: isShowLoading };
 }
