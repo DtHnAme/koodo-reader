@@ -23,7 +23,6 @@ class TextToSpeechPlayer extends React.Component<
     this.state = {
       isSpeechOn: false,
       isPlaying: false,
-      isMuted: false,
     };
     this.voices = [];
     this.currentNode = [];
@@ -116,7 +115,6 @@ class TextToSpeechPlayer extends React.Component<
     });
   };
   async handleRead() {
-
     for (let index = this.currentNodeIndex; index < this.currentNode.length; index++) {
       let currentText = this.currentNode[index];
       this.currentNodeIndex = index;
@@ -178,7 +176,6 @@ class TextToSpeechPlayer extends React.Component<
           resolve("error");
         },
         onload: async () => {
-          this.player.mute(this.state.isMuted);
           resolve("start");
         },
         onplay: () => {
@@ -263,13 +260,6 @@ class TextToSpeechPlayer extends React.Component<
     this.handleHightLightText(this.currentNode[this.currentNodeIndex]);
     this.handleLazySpeech();
   };
-  handleMuteSpeech() {
-    this.setState({ isMuted: !this.state.isMuted }, () => {
-      if (this.player) {
-        this.player.mute(this.state.isMuted);
-      }
-    });
-  };
   render() {
     return (
       <>
@@ -314,17 +304,12 @@ class TextToSpeechPlayer extends React.Component<
             >
               Next
             </span>
-            <span className="player-button mute-player-button"
+            <span className="player-button close-player-button"
                 onClick={() => {
-                  this.handleMuteSpeech();
+                  this.props.handleTextSpeech(false);
                 }}
-                style={
-                  this.state.isMuted
-                  ? {} 
-                  : { opacity: "0.6" }
-                }
             >
-              {this.state.isMuted ? 'Muted' : 'Mute'}
+              Close
             </span>
           </>
         }

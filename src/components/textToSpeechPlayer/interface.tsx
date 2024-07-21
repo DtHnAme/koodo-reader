@@ -6,10 +6,10 @@ export interface TextToSpeechPlayerProps {
   currentBook: BookModel;
   htmlBook: HtmlBook;
   isReading: boolean;
+  handleTextSpeech: (isTextSpeech: boolean) => void;
   t: (title: string) => string;
 }
 export interface TextToSpeechPlayerState {
   isSpeechOn: boolean;
   isPlaying: boolean;
-  isMuted: boolean;
 }

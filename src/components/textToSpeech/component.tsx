@@ -308,20 +308,18 @@ class TextToSpeech extends React.Component<
                 className="single-control-switch"
                 onClick={() => {
                   if (isElectron) {
-                    this.setState({ isAudioOn: !this.state.isAudioOn }, () => {
-                      this.props.handleTextSpeech(this.state.isAudioOn);
-                      this.handleSelect();
-                    })  
+                    this.props.handleTextSpeech(!this.props.isTextSpeech);
+                    this.handleSelect();
                   } else {
                     this.handleChangeAudio();
                   }
                 }}
-                style={this.state.isAudioOn ? {} : { opacity: 0.6 }}
+                style={this.state.isAudioOn || this.props.isTextSpeech ? {} : { opacity: 0.6 }}
               >
                 <span
                   className="single-control-button"
                   style={
-                    this.state.isAudioOn
+                    this.state.isAudioOn || this.props.isTextSpeech
                       ? {
                           transform: "translateX(20px)",
                           transition: "transform 0.5s ease",
@@ -334,7 +332,7 @@ class TextToSpeech extends React.Component<
                 ></span>
               </span>
             </div>
-            {this.state.isAudioOn && this.voices.length > 0 && (
+            {this.state.isAudioOn || this.props.isTextSpeech && this.voices.length > 0 && (
               <div
                 className="setting-dialog-new-title"
                 style={{
@@ -371,7 +369,7 @@ class TextToSpeech extends React.Component<
                 </select>
               </div>
             )}
-            {this.state.isAudioOn && (
+            {this.state.isAudioOn || this.props.isTextSpeech && (
               <div
                 className="setting-dialog-new-title"
                 style={{ marginLeft: "20px", width: "88%", fontWeight: 500 }}
