@@ -16,7 +16,6 @@ class TextToSpeechPlayer extends React.Component<
   player: any;
   timer: any;
   voices: any;
-  nativeVoices: any;
   currentNode: string[];
   currentNodeIndex: number;
   constructor(props: TextToSpeechPlayerProps) {
@@ -27,7 +26,6 @@ class TextToSpeechPlayer extends React.Component<
       isMuted: false,
     };
     this.voices = [];
-    this.nativeVoices = [];
     this.currentNode = [];
     this.currentNodeIndex = 0;
   }
@@ -37,7 +35,6 @@ class TextToSpeechPlayer extends React.Component<
     }
 
     this.voices = await BingTTSUtil.getVoiceList();
-    this.nativeVoices = await this.handleGetNativeSpeech();
   };
   async UNSAFE_componentWillReceiveProps(props: TextToSpeechPlayerProps) {
     if (props.htmlBook !== this.props.htmlBook && props.htmlBook) {
@@ -100,7 +97,8 @@ class TextToSpeechPlayer extends React.Component<
   };
   handleCacheAudio = async (voiceText: string) => {
     let voiceIndex = StorageUtil.getReaderConfig("voiceIndex") || 0;
-    let voiceName = this.voices[voiceIndex - this.nativeVoices.length].ShortName;
+    let voiceNative = window.speechSynthesis.getVoices();
+    let voiceName = this.voices[voiceIndex - voiceNative.length].ShortName;
     let speed = StorageUtil.getReaderConfig("voiceSpeed") || 1;
     return window.require("electron").ipcRenderer.invoke("edge-tts", {
       text: BingTTSUtil.createSSML(
