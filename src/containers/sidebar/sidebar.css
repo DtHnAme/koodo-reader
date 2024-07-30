@@ -7,8 +7,8 @@
   width: 125px;
   position: absolute;
   top: 15px;
-  left: 70px;
   cursor: pointer;
+  transform: translateX(70px);
   transition: 0.3s ease;
 }
 .side-menu-container-parent {
@@ -78,13 +78,13 @@
 }
 .side-menu-icon {
   /* float: left; */
-  font-size: 22px;
-  margin: 9px 12px 7px 18px;
+  font-size: 24px;
+  margin-right: 18px;
   display: flex;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  width: 30px;
+  width: 24px;
   transition: 0.5s ease;
 }
 

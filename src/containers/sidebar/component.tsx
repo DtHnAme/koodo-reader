@@ -104,7 +104,7 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
             >
               <div
                 className="side-menu-icon"
-                style={this.props.isCollapsed ? { marginLeft: "3px"} : { marginLeft: "38px" }}
+                style={this.props.isCollapsed ? { marginLeft: "8px"} : { marginLeft: "43px" }}
               >
                 <span
                   className={
@@ -183,7 +183,7 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
             >
               <div
                 className="side-menu-icon"
-                style={this.props.isCollapsed ? { marginLeft: "3px" } : { marginLeft: "38px" }}
+                style={this.props.isCollapsed ? { marginLeft: "8px" } : { marginLeft: "43px" }}
               >
                 <span
                   className={
@@ -242,7 +242,7 @@ class Sidebar extends React.Component<SidebarProps, SidebarState> {
             onClick={() => {
               this.handleJump("https://koodoreader.com");
             }}
-            style={this.state.isCollapsed ? { opacity: 1, width: 0, top: 0, left: 0 } : {}}
+            style={this.state.isCollapsed ? { opacity: 0, transform: 'translateX(20px)', pointerEvents: 'none' } : {} }
             className="logo"
           />
           <div
