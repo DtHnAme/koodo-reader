@@ -266,7 +266,7 @@ class TextToSpeechPlayer extends React.Component<
         {
           <>
             {/* <div className=""></div> */}
-            <span className="player-button stop-player-button"
+            <span className="icon-stop player-button stop-player-button"
                 onClick={() => {
                   this.handleStopSpeech();
                 }}
@@ -275,17 +275,16 @@ class TextToSpeechPlayer extends React.Component<
                   ? {}
                   : { opacity: "0.6" }
                 }
-            >
-              Stop
-            </span>
-            <span className="player-button previous-player-button"
+            />
+            <span className="icon-previous player-button previous-player-button"
                 onClick={() => {
                   this.handlePreviousSpeech();
                 }}
-            >
-              Previous
-            </span>
-            <span className="player-button sp-player-button"
+            />
+            <span className={
+                  this.state.isPlaying ? 
+                  "icon-pause player-button sp-player-button" : "icon-play2 player-button sp-player-button"
+                }
                 onClick={() => {
                   this.handleStartOrPauseSpeech();
                 }}
@@ -294,23 +293,17 @@ class TextToSpeechPlayer extends React.Component<
                   ? {} 
                   : { opacity: "0.6" }
                 }
-            >
-              {this.state.isPlaying ? 'Pause' : 'Play'}
-            </span>
-            <span className="player-button next-player-button"
+            />
+            <span className="icon-next player-button next-player-button"
                 onClick={() => {
                   this.handleNextSpeech();
                 }}
-            >
-              Next
-            </span>
-            <span className="player-button close-player-button"
+            />
+            <span className="icon-close2 player-button close-player-button"
                 onClick={() => {
                   this.props.handleTextSpeech(false);
                 }}
-            >
-              Close
-            </span>
+            />
           </>
         }
       </>

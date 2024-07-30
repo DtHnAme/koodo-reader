@@ -2,5 +2,6 @@
 .player-button {
     margin: 0 10px;
     opacity: 1;
-    transition: 0.3 ease;
+    transition: all 0.3 ease;
+    font-size: 24px;
 }

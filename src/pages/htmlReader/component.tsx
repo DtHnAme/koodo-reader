@@ -292,8 +292,8 @@ class Reader extends React.Component<ReaderProps, ReaderState> {
             className="player-panel"
             style={
               this.props.isTextSpeech
-                ? { opacity: "1", pointerEvents: "auto" }
-                : { opacity: "0", pointerEvents: "none"  }
+                ? { opacity: "1", pointerEvents: "auto", transform: "translateY(-32px)" }
+                : { opacity: "0", pointerEvents: "none", transform: "translateY(0)" }
             }
           >
             <TextToSpeechPlayer />

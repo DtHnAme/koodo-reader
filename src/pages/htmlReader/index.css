@@ -136,15 +136,14 @@
   cursor: pointer;
 }
 .player-panel {
-  width: 300px;
-  height: 40px;
+  width: 240px;
+  height: 48px;
   position: absolute;
-  right: calc(50vw - 150px);
+  right: calc(50vw - 120px);
   bottom: 0px;
   background-color: rgba(75, 75, 75, 0.8);
-  border-radius: 20px;
-  transform: translateY(-30px);
-  transition: opacity 0.5s ease;
+  border-radius: 10px;
+  transition: all 0.5s ease;
   z-index: 10;
   opacity: 1;
   display: flex;
