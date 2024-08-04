@@ -62,9 +62,7 @@ class Viewer extends React.Component<ViewerProps, ViewerState> {
 
     this.props.handleRenderBookFunc(this.handleRenderBook);
 
-    window.addEventListener("resize", () => {
-      BookUtil.reloadBooks();
-    });
+    window.addEventListener("resize", this.handleResize);
   }
 
   handleHighlight = (rendition: any) => {
@@ -84,6 +82,38 @@ class Viewer extends React.Component<ViewerProps, ViewerState> {
       this.props.currentBook.format,
       this.handleNoteClick
     );
+  };
+  handleResize = async () => {
+    let pageArea = document.getElementById("page-area");
+      if (!pageArea) return;
+    let iframe = pageArea.getElementsByTagName("iframe")[0];
+      if (!iframe) return;
+    let doc = iframe.contentDocument;
+      if (!doc) return;
+
+    let pageSize = await this.state.rendition.getPageSize();
+    let pageInfo = await this.state.rendition.getProgress();
+
+    pageArea.style["width"] = "";
+    pageArea.style["height"] = "";
+
+    doc.body.style["width"] = pageSize.width + "px";
+    doc.body.style["height"] = pageSize.height + "px";
+
+    let isDouble = this.state.readerMode === "double";
+    if (!isDouble) return;
+
+    let columnGap = Math.floor(pageSize.width / 12);
+    let columnWidth = (pageSize.width - columnGap) / 2;
+
+    doc.body.style["column-gap"] = columnGap + "px";
+    doc.body.style["column-width"] = columnWidth + "px";
+
+    let pageWidth = (pageSize.width + Math.floor(pageSize.width / 12));
+
+    doc.body.scrollTo({
+      left: (pageInfo.currentPage - 1) * pageWidth
+    })
   };
   handleNoteClick = (event: Event) => {
     this.props.handleNoteKey((event.target as any).dataset.key);
@@ -219,6 +249,7 @@ class Viewer extends React.Component<ViewerProps, ViewerState> {
       binicReadingProcess();
       this.handleBindGesture();
       this.handleHighlight(rendition);
+      this.handleResize();
       lock = true;
       setTimeout(function () {
         lock = false;
